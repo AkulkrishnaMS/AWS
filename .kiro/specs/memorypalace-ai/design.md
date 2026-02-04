@@ -10,6 +10,8 @@ The platform uses a serverless AWS architecture with React frontend, Amazon Bedr
 
 ### High-Level Architecture
 
+![Architecture Diagram](./architecture.png)
+
 ```mermaid
 graph TB
     subgraph "Frontend Layer"
@@ -67,6 +69,24 @@ graph TB
     B --> P
     G --> P
 ```
+
+### System Components
+
+## Cost Estimation
+
+### AWS Services Pricing (Estimated for 1,000 users)
+
+| Service | Usage | Monthly Cost |
+|---------|-------|-------------|
+| Amazon Bedrock (Claude Sonnet) | ~100K requests/month | $50-100 |
+| AWS Lambda | ~500K invocations | $1-2 |
+| DynamoDB | 5GB storage, on-demand | $5-10 |
+| S3 | 50GB storage, 100GB transfer | $3-5 |
+| API Gateway | 500K requests | $2 |
+| Cognito | 1,000 MAU (Free tier) | $0 |
+| **Total Estimated** | | **$61-119/month** |
+
+**Scalability:** Serverless architecture scales automatically with demand.
 
 ### System Components
 
@@ -374,6 +394,59 @@ Based on the prework analysis, here are the key correctness properties for Memor
 <function_calls>
 <invoke name="prework">
 <parameter name="featureName">memorypalace-ai
+
+## Deployment Strategy
+
+### CI/CD Pipeline
+- **Source Control:** GitHub
+- **Build:** GitHub Actions
+- **Testing:** Automated test suite on every commit
+- **Staging:** AWS Amplify preview environments
+- **Production:** AWS Amplify with manual approval gate
+
+### Infrastructure as Code
+- AWS CDK for infrastructure provisioning
+- DynamoDB tables, Lambda functions, S3 buckets defined in code
+- Environment variables managed via AWS Systems Manager Parameter Store
+
+### Rollout Strategy
+- **Phase 1:** Beta launch with 50 users
+- **Phase 2:** Open beta with monitoring
+- **Phase 3:** General availability with auto-scaling
+
+## Security Architecture
+
+### Authentication & Authorization
+- **User Authentication:** AWS Cognito with MFA support
+- **API Authorization:** JWT tokens validated by API Gateway
+- **Role-Based Access:** Users can only access their own palaces
+
+### Data Protection
+- **Encryption at Rest:** DynamoDB encryption enabled
+- **Encryption in Transit:** TLS 1.3 for all API calls
+- **S3 Security:** Private buckets with pre-signed URLs for access
+
+### Privacy Compliance
+- **Data Minimization:** Only collect essential user data
+- **User Rights:** Data export and deletion capabilities
+- **Audit Logging:** CloudWatch logs for security events
+
+## Monitoring and Observability
+
+### AWS CloudWatch
+- **Metrics:** Lambda execution time, API latency, error rates
+- **Alarms:** Trigger on high error rates or latency spikes
+- **Dashboards:** Real-time system health visualization
+
+### Application Insights
+- **User Analytics:** Track palace creation, content uploads, review sessions
+- **Performance Metrics:** 70% retention rate target monitoring
+- **Error Tracking:** AI service failures, content processing errors
+
+### Logging
+- **Structured Logging:** JSON format for all Lambda functions
+- **Log Aggregation:** CloudWatch Logs Insights for querying
+- **Retention:** 30-day log retention for debugging
 
 ## Error Handling
 
