@@ -2,7 +2,7 @@
 
 ## Introduction
 
-MemoryPalace AI is an intelligent learning agent that creates personalized virtual memory palaces for students to improve information retention. The system addresses the problem that traditional rote learning has only 50% retention after 24 hours by combining the proven Method of Loci technique with AI personalization to achieve 70% retention rates.
+NeuroPalace is an intelligent learning agent that creates personalized virtual memory palaces for students to improve information retention. The system addresses the problem that traditional rote learning has only 50% retention after 24 hours by combining the proven Method of Loci technique with AI personalization to achieve 70% retention rates.
 
 ## Glossary
 

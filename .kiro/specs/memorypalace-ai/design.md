@@ -1,8 +1,8 @@
-# Design Document: MemoryPalace AI
+# Design Document: NeuroPalace
 
 ## Overview
 
-MemoryPalace AI is an intelligent learning platform that combines the ancient Method of Loci technique with modern AI personalization to create virtual memory palaces for enhanced learning retention. The system leverages spatial memory and visual associations to help students achieve 70% retention rates (compared to 50% with traditional methods) through personalized, adaptive learning experiences.
+NeuroPalace is an intelligent learning platform that combines the ancient Method of Loci technique with modern AI personalization to create virtual memory palaces for enhanced learning retention. The system leverages spatial memory and visual associations to help students achieve 70% retention rates (compared to 50% with traditional methods) through personalized, adaptive learning experiences.
 
 The platform uses a serverless AWS architecture with React frontend, Amazon Bedrock for AI capabilities, and DynamoDB for data persistence. The core innovation lies in the AI-driven personalization engine that adapts palace layouts, content placement, and visual associations based on individual learning profiles and performance data.
 
@@ -341,7 +341,7 @@ interface SpatialMapping {
 
 *A property is a characteristic or behavior that should hold true across all valid executions of a system—essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
 
-Based on the prework analysis, here are the key correctness properties for MemoryPalace AI:
+Based on the prework analysis, here are the key correctness properties for NeuroPalace:
 
 ### Property 1: Template Selection and Initialization
 *For any* palace template selection, the system should initialize a palace with the exact structure and visual elements defined in the selected template
@@ -393,7 +393,7 @@ Based on the prework analysis, here are the key correctness properties for Memor
 
 <function_calls>
 <invoke name="prework">
-<parameter name="featureName">memorypalace-ai
+<parameter name="featureName">neuropalace
 
 ## Deployment Strategy
 
@@ -502,7 +502,7 @@ The testing strategy employs both unit testing and property-based testing to ens
 - **Testing Framework**: Use fast-check for TypeScript/JavaScript property-based testing
 - **Minimum Iterations**: 100 iterations per property test to ensure statistical confidence
 - **Test Tagging**: Each property test must reference its design document property
-- **Tag Format**: `Feature: memorypalace-ai, Property {number}: {property_text}`
+- **Tag Format**: `Feature: neuropalace, Property {number}: {property_text}`
 
 ### Unit Testing Focus Areas
 
